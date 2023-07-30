@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { Grid } from "@mui/material";
+import SpeechToText from "./speechToText";
 
 const ModelHome = () => {
-
   const [newResponse, setNewRespone] = useState("");
   const [pastInput, setPastInput] = useState("");
   const [newInput, setNewInput] = useState("");
@@ -37,39 +37,51 @@ const ModelHome = () => {
       setNewRespone(response.generated_text);
       setPastInput(response.past_user_inputs);
     });
-  },[newInput]);
+  }, [newInput]);
 
   const handleSend = () => {
     setNewInput(newTyping);
-    setNewTyping('');
+    setNewTyping("");
   };
 
   return (
     <div>
-      <Grid container style={{ padding: "50px" }}>
-        <Grid item xs={12}>
-          <TextField
-            id="outlined-basic"
-            label="Type Here.."
-            variant="outlined"
-            value={newTyping}
-            onChange={(e) => setNewTyping(e.target.value)}
-          />
+      <Grid container>
+        <Grid item xs={6}>
+          kdmsk
         </Grid>
-        <Grid item xs={12} style={{ paddingTop: "20px" }}>
-          <Button variant="outlined" onClick={handleSend}>Send</Button>
+        <Grid container item xs={6} style={{ padding: "50px" }}>
+          <Grid item xs={12}>
+            <TextField
+              id="outlined-basic"
+              label="Type Here.."
+              variant="outlined"
+              value={newTyping}
+              onChange={(e) => setNewTyping(e.target.value)}
+            />
+          </Grid>
+          <Grid item xs={12} style={{ paddingTop: "20px" }}>
+            <Button variant="outlined" onClick={handleSend}>
+              Send
+            </Button>
+          </Grid>
+
+          <div
+            style={{
+              padding: "30px",
+            //   margin: "0px 50px",
+              border: "1px solid #8cbae8",
+            }}
+          >
+            {newResponse}
+          </div>
         </Grid>
       </Grid>
 
-      <div
-        style={{
-          padding: "30px",
-          margin: "0px 50px",
-          border: "1px solid #8cbae8",
-        }}
-      >
-      {newResponse}
-      </div>
+      {/* <div>
+        <h1>Speech-to-Text Example</h1>
+        <SpeechToText />
+      </div> */}
     </div>
   );
 };
