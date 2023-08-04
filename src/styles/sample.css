@@ -1,3 +1,10 @@
 .clss{
     /* Sample stylings here */
 }
+
+.clss2{
+    /* Sample stylings here */
+    font-size: large;
+    color: yellowgreen;
+    width: fit-content;
+}
